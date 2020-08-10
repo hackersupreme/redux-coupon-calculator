@@ -26,7 +26,7 @@ Right now it only works on desktop. Plans are in place to make it responsive soo
 
 ## Live Example
 
-http://cuoponcalculator.hackersupreme.com
+http://coupon-calculator.hackersupreme.com
 
 ## Installation
 
