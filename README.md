@@ -1,4 +1,4 @@
-# React Redux Cuopon Calculator SPA
+# React Redux Coupon Calculator SPA
 
 Contents
 
@@ -10,11 +10,11 @@ Contents
 
 ## Overview
 
-This is a single page app that provides an interface for creating cuopons and exporting them as csv data. 
+This is a single page app that provides an interface for creating coupons and exporting them as csv data. 
 
-It has two main parts: an input form for creating new cuopons and a list of cuopons where you can edit or remove individual cuopons.
+It has two main parts: an input form for creating new coupons and a list of coupons where you can edit or remove individual coupons.
 
-After you create the cuopons you want, you can download the csv data and import it into Excel, Google Sheets, or use it any way you'd like.
+After you create the coupons you want, you can download the csv data and import it into Excel, Google Sheets, or use it any way you'd like.
 
 It's built using React. It uses [Redux](https://redux.js.org/) to handle the data in the app, uses the animation library [React Spring](https://www.react-spring.io/) for animations, and uses the library [React-CSV](https://www.npmjs.com/package/react-csv) to create the csv data. See the Documentation section for more information on how it's built.
 
@@ -67,18 +67,18 @@ Contents
 
 ### Store
 
-The store of the app consists of two parts under `cuopons`: an array called `allIds` and an object called `byIds`. The `allIds` array contains all the ids of the cuopons. The `byIds` object contains all the cuopon objects. 
+The store of the app consists of two parts under `coupons`: an array called `allIds` and an object called `byIds`. The `allIds` array contains all the ids of the coupons. The `byIds` object contains all the coupon objects. 
 
 ```
 state = {
- 	cuopons: {
+ 	coupons: {
   		byIds: {},
   		allIds: []
   	}
 }
 ```
 
-The properties of the `byIds` object are the ids of each cuopon with the values being the corresponding cuopon object. The cuopon object stored in the `byIds` object has the following structure:
+The properties of the `byIds` object are the ids of each coupon with the values being the corresponding coupon object. The coupon object stored in the `byIds` object has the following structure:
 
 ```
 byIds: {
@@ -148,16 +148,16 @@ The `updateCuopon` functions's payload is just the cuopon object to be updated i
 
 There are three actions for the reducer function to account for: `ADD_CUOPON`, `UPDATE_CUOPON`, and `REMOVE_CUOPON`. The reducer is a switch statement with each case being the action type. 
 
-The `ADD_CUOPON` action causes the reducer to add the cuopon's id to the `allIds` array and adds the cuopon object to the `byIds` object.
+The `ADD_CUOPON` action causes the reducer to add the coupon's id to the `allIds` array and adds the coupon object to the `byIds` object.
 
-The `REMOVE_CUOPON` action removes the cuopon's id from the `allIds` array and removes the cuopon object from the `byIds` object.
+The `REMOVE_CUOPON` action removes the coupon's id from the `allIds` array and removes the coupon object from the `byIds` object.
 
-The `UPDATE_CUOPON` action uses the id from the action to find the object being edited and updates the cuopon's values in the `byIds` object.
+The `UPDATE_CUOPON` action uses the id from the action to find the object being edited and updates the coupon's values in the `byIds` object.
 
 If I add any more actions to the app I'll separate these out to their own files.
 
 ```
-let cuopons = function(state = initialState, action) {
+let coupons = function(state = initialState, action) {
 
 	switch(action.type) {
 
@@ -290,7 +290,7 @@ The top level component of the app is `App` and it's found in the file `App.js`.
 
 The `CuoponList` component connects to the store and uses the function `mapStateToProps` to recieve the `byIds` object and the `allIds` array as props. It gets the action creators `updateCuopon` and `removeCuopon` as dispatch props too.
 
-The component is wrapped in the `<main>` tag and has the component `AddCuopon` and an un-ordered list of `Cuopon` components as children. The unordered list of cuopons is wrapped in a `Transition` component which is from the animation library React Spring.
+The component is wrapped in the `<main>` tag and has the component `AddCuopon` and an un-ordered list of `Cuopon` components as children. The unordered list of coupons is wrapped in a `Transition` component which is from the animation library React Spring.
 
 ```
 <main ... >
@@ -309,26 +309,26 @@ The component is wrapped in the `<main>` tag and has the component `AddCuopon` a
 
 The un-ordered list of `Cuopon` components uses a `Transition` component from the animation library React Spring to animate the list of `Cuopons` when they enter or exit the list. See the library's [documentation](https://www.react-spring.io/) for more information on how this works.
 
-The `Transition` component takes in an array of items to animate. The array used here is `cuopons` and a for loop feeds it cuopon objects from the `byIds` object. I should have used `Object.values()` but sometimes I forget it exists and how useful it is.
+The `Transition` component takes in an array of items to animate. The array used here is `coupons` and a for loop feeds it coupon objects from the `byIds` object. I should have used `Object.values()` but sometimes I forget it exists and how useful it is.
 
-The function that's a child of the `Transition` component returns a `Cuopon` component for each item in the `cuopons` array. The `item` is the cuopon object and the `props` are the animated styles. The `Cuopon` is passed the functions `updateCuopon` and `removeCuopon` as props.
+The function that's a child of the `Transition` component returns a `Cuopon` component for each item in the `cuopons` array. The `item` is the coupon object and the `props` are the animated styles. The `Cuopon` is passed the functions `updateCuopon` and `removeCuopon` as props.
 
 ```
 const { removeCuopon, updateCuopon, byIds, allIds } = props;
 
-let cuopons = [];
+let coupons = [];
 
 for (let i = 0; i < allIds.length; i++) {
 
-	let cuopon = byIds[allIds[i]];
+	let coupon = byIds[allIds[i]];
 
-	cuopons.push(cuopon);
+	coupons.push(coupon);
 
 }	
 ...	
 <Transition
-	items={cuopons}
-	keys={cuopon => cuopon.id}
+	items={coupons}
+	keys={coupon => coupon.id}
 	from={{opacity: 0, height: 0}}
 	enter={{opacity: 1, height: 'auto'}}
 	leave={{opacity:0, height: 0, margin: 0}}>
@@ -340,7 +340,7 @@ for (let i = 0; i < allIds.length; i++) {
 
 #### Cuopon
 
-The `Cuopon` components consist of a top section and a bottom section. The top section holds some data from the cuopon object it recieves as props and the bottom section holds a form where a user can change the values of the cuopon as well as remove it from the list.
+The `Cuopon` components consist of a top section and a bottom section. The top section holds some data from the coupon object it recieves as props and the bottom section holds a form where a user can change the values of the cuopon as well as remove it from the list.
 
 When the `updateCuopon` action is fired, the top half of the component goes through a brief animation where the background color flashes blue.
 
