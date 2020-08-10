@@ -20,9 +20,9 @@ It's built using React. It uses [Redux](https://redux.js.org/) to handle the dat
 
 Right now it only works on desktop. Plans are in place to make it responsive soon!
 
-![screenshot](/screenshot.PNG)
+![screenshot](/screenshot.png)
 
-![cuopon](/cuopon.PNG)
+![cuopon](/cuopon.png)
 
 ## Live Example
 
