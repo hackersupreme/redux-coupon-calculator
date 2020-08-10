@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+.color-dark {
+  color: #3d4b51;
+}
+
+.app__container {
+  background: linear-gradient(to bottom, white, #cfd0d5 500px);
+  border-top: 8px solid #181f49;
+}
+
+.header__container {
+  position: relative;
+  width: 75%;
+  left: 12.5%;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0px;
+  border-bottom: 1px solid #cfd0d5;
+}
+
+.header__title {
+  font-size: 32px;
+}
+
+.header__subtitle {
+  font-size: 14px;
+  grid-column: 1 / 2;
+  font-weight: lighter;
+}
+
+.cuopon-main__container {
+  position: relative;
+  width: 75%;
+  left: 12.5%;
+}
+
+.csv-download__button {
+  position: relative;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: none;
+  background: #2c99d0;
+  color: #edf7f7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.csv-download__button:hover,
+.csv-download__button:focus
+{
+  background: #145170;
+}
+
+.csv-about__container {
+  position: relative;
+  width: 75%;
+  left: 12.5%;
+  margin: 32px 0px;
+  padding: 32px 0px;
+  background: #4c5d66;
+  border-radius: 4px;
+}
+
+.csv-about__header {
+  padding: 0px 32px;
+  margin: 0;
+  margin-bottom: 16px;
+  color: #d2dade;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bolder;
+}
+
+.csv-about__list {
+  position: relative;
+  width: 75%;
+  margin: 0;
+  padding: 0px 32px;
+  line-height: 2em;
+}
+
+.csv-about__list-item {
+  color: #c7dde6;
+  margin: 16px;
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  left: 12.5%;
+  width: 75%;
+  padding: 32px 0px;
+}
+
+.footer__container > * {
+  margin: 8px;
+}

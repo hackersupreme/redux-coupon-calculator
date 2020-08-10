@@ -1,0 +1,128 @@
+.cuopon-list__container {
+	display: flex;
+	flex-direction: column;
+	margin: 32px 0px;
+	padding: 0;
+}
+
+.cuopon__container {
+	list-style: none;
+	width: 100%;
+	padding: 0;
+	margin: 16px 0px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 0px 10px #b3b4bc, 0px 5px 5px #9799a4;
+	border-radius: 16px;
+}
+
+.cuopon__top-section {
+	display: grid;
+	grid-template-columns: 132px 220px auto auto;
+	grid-column-gap: 16px;
+	align-items: center;
+	background: white;
+	padding: 16px 32px;
+	border-radius: 8px 8px 0px 0px;
+}
+
+.cuopon__discount {
+	font-size: 42px;
+	margin: 0;
+	padding: 0;
+}
+
+.cuopon__discount > span {
+	margin-left: 8px;
+	color: #6c7c83;
+	font-weight: lighter;
+	font-size: 18px;
+}
+
+.cuopon__name {
+	font-size: 32px;
+	margin: 0;
+	font-weight: lighter;
+}
+
+.cuopon__expiration {
+	font-size: 16px;
+	margin: 0;
+	color: #6c7c83;
+	text-align: right;
+}
+
+.cuopon__price {
+	font-size: 16px;
+	font-weight: lighter;
+	margin: 0;
+	color: #6c7c83;
+	text-align: right;
+}
+
+
+
+.cuopon__bottom-section {
+	background: #dadee1;
+	padding: 16px 32px;
+	border-radius: 0px 0px 8px 8px;
+}
+
+.cuopon__form {
+	display: grid;
+	grid-template-columns: auto 130px 130px 130px 180px;
+	grid-gap: 16px;
+}
+
+.cuopon__form-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bolder;
+}
+
+.cuopon__form-input {
+	padding: 8px;
+	border: none;
+	border-radius: 4px;
+	border: 1px solid #d0dbe1;
+}
+
+.cuopon__form-input:focus {
+	border: 1px solid #3c4c54;
+	outline: none;
+}
+
+.cuopon__form-submit {
+	padding: 8px;
+	border-radius: 4px;
+	border: none;
+	grid-column: 5 / 6;
+	background: #737e84;
+	color: #e5eff6;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bolder;
+}
+
+.cuopon__form-submit:hover,
+.cuopon__form-submit:focus {
+	background: #273238;
+}
+
+.cuopon__form-remove {
+	grid-column: 4 / 5;
+	border: none;
+	border-radius: 4px;
+	background: #92563a;
+	color: #ece8e2;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: bolder;
+}
+
+.cuopon__form-remove:hover,
+.cuopon__form-remove:focus
+ {
+	background: #a5190b;
+}
