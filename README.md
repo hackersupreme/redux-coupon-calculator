@@ -99,22 +99,22 @@ byIds: {
 
 There are only 3 actions currently in the app. 
 
-- `ADD_CUOPON`
-- `UPDATE_CUOPON`
-- `REMOVE_CUOPON`
+- `ADD_COUPON`
+- `UPDATE_COUPON`
+- `REMOVE_COUPON`
 
 While these actions are limited and pretty simple, the redux architecture allows for the easy addition of new actions if needed.
 
-The actions are defined as constants in the file `actions.js` in the redux folder. In the same file are the action creators `addCuopon`, `updateCuopon`, and `removeCuopon`.
+The actions are defined as constants in the file `actions.js` in the redux folder. In the same file are the action creators `addCoupon`, `updateCoupon`, and `removeCoupon`.
 
 All action creators return an action object that has the action type and a payload.
 
-The `addCuopon` function's payload is an object that contains the id of the cuopon and the content of the cuopon, an object with all of the cuopon's properties.
+The `addCoupon` function's payload is an object that contains the id of the coupon and the content of the coupon, an object with all of the coupon's properties.
 
 
 ```
 {
-	type: ADD_CUOPON,
+	type: ADD_COUPON,
 	payload: {
 		id: 0,
 		content: {
@@ -126,33 +126,33 @@ The `addCuopon` function's payload is an object that contains the id of the cuop
 }
 ```
 
-The `removeCuopon` function's payload is the id of the object to be removed.
+The `removeCoupon` function's payload is the id of the object to be removed.
 
 ```
 {
-	type: REMOVE_CUOPON,
+	type: REMOVE_COUPON,
 	payload: id
 }
 ```
 
-The `updateCuopon` functions's payload is just the cuopon object to be updated itself.
+The `updateCoupon` functions's payload is just the coupon object to be updated itself.
 
 ```
 {
-	type: UPDATE_CUOPON,
-	payload: cuopon
+	type: UPDATE_COUPON,
+	payload: coupon
 }
 ```
 
 ### Reducers
 
-There are three actions for the reducer function to account for: `ADD_CUOPON`, `UPDATE_CUOPON`, and `REMOVE_CUOPON`. The reducer is a switch statement with each case being the action type. 
+There are three actions for the reducer function to account for: `ADD_COUPON`, `UPDATE_COUPON`, and `REMOVE_COUPON`. The reducer is a switch statement with each case being the action type. 
 
-The `ADD_CUOPON` action causes the reducer to add the coupon's id to the `allIds` array and adds the coupon object to the `byIds` object.
+The `ADD_COUPON` action causes the reducer to add the coupon's id to the `allIds` array and adds the coupon object to the `byIds` object.
 
-The `REMOVE_CUOPON` action removes the coupon's id from the `allIds` array and removes the coupon object from the `byIds` object.
+The `REMOVE_COUPON` action removes the coupon's id from the `allIds` array and removes the coupon object from the `byIds` object.
 
-The `UPDATE_CUOPON` action uses the id from the action to find the object being edited and updates the coupon's values in the `byIds` object.
+The `UPDATE_COUPON` action uses the id from the action to find the object being edited and updates the coupon's values in the `byIds` object.
 
 If I add any more actions to the app I'll separate these out to their own files.
 
@@ -161,7 +161,7 @@ let coupons = function(state = initialState, action) {
 
 	switch(action.type) {
 
-		case ADD_CUOPON:
+		case ADD_COUPON:
 
 			let { content, id } = action.payload;
 
@@ -198,9 +198,9 @@ let coupons = function(state = initialState, action) {
 
 			return updated_state;
 
-		case UPDATE_CUOPON:
+		case UPDATE_COUPON:
 
-			let updated_cuopon = action.payload;
+			let updated_coupon = action.payload;
 
 			return {
 
@@ -210,22 +210,22 @@ let coupons = function(state = initialState, action) {
 
 					...state.byIds,
 
-					[updated_cuopon.id]: {
+					[updated_coupon.id]: {
 
-						id: updated_cuopon.id,
-						name: updated_cuopon.name,
-						price: updated_cuopon.price,
-						quantity: updated_cuopon.quantity,
-						discount: updated_cuopon.discount,
-						discount_price: updated_cuopon.discount_price,
-						expiration: updated_cuopon.expiration
+						id: updated_coupon.id,
+						name: updated_coupon.name,
+						price: updated_coupon.price,
+						quantity: updated_coupon.quantity,
+						discount: updated_coupon.discount,
+						discount_price: updated_coupon.discount_price,
+						expiration: updated_coupon.expiration
 					}
 
 				}
 
 			}
 
-		case REMOVE_CUOPON: 
+		case REMOVE_COUPON: 
 
 			let removed_id = action.payload;
 
@@ -269,7 +269,7 @@ let coupons = function(state = initialState, action) {
 
 #### App
 
-The top level component of the app is `App` and it's found in the file `App.js`. It contains the html of the header, the how-to section, and the footer. It also contains the components `CuoponList` and `CSVDownloadButton`, which are two of the three components in the app that connect to the store. 
+The top level component of the app is `App` and it's found in the file `App.js`. It contains the html of the header, the how-to section, and the footer. It also contains the components `CouponList` and `CSVDownloadButton`, which are two of the three components in the app that connect to the store. 
 
 ```
 <App>
@@ -278,7 +278,7 @@ The top level component of the app is `App` and it's found in the file `App.js`.
 		<CSVDownloadButton />
 	</header>
 	
-	<CuoponList />
+	<CouponList />
 	
 	<section title="how to">...</section>
 	
@@ -286,35 +286,35 @@ The top level component of the app is `App` and it's found in the file `App.js`.
 </App>
 ```
 
-#### CuoponList
+#### CouponList
 
-The `CuoponList` component connects to the store and uses the function `mapStateToProps` to recieve the `byIds` object and the `allIds` array as props. It gets the action creators `updateCuopon` and `removeCuopon` as dispatch props too.
+The `CouponList` component connects to the store and uses the function `mapStateToProps` to recieve the `byIds` object and the `allIds` array as props. It gets the action creators `updateCoupon` and `removeCoupon` as dispatch props too.
 
-The component is wrapped in the `<main>` tag and has the component `AddCuopon` and an un-ordered list of `Cuopon` components as children. The unordered list of coupons is wrapped in a `Transition` component which is from the animation library React Spring.
+The component is wrapped in the `<main>` tag and has the component `AddCoupon` and an un-ordered list of `Coupon` components as children. The unordered list of coupons is wrapped in a `Transition` component which is from the animation library React Spring.
 
 ```
 <main ... >
-	<AddCuopon />
+	<AddCoupon />
 	
 	<ul ... >
 		<Transition ...>
-		<Cuopon cuopon={cuopon} ... />
-		<Cuopon cuopon={cuopon} ... />
-		<Cuopon cuopon={cuopon} ... />
+		<Coupon coupon={coupon} ... />
+		<Coupon coupon={coupon} ... />
+		<Coupon coupon={coupon} ... />
 		...
 		</Transition>
 	</ul>
 </main>
 ```
 
-The un-ordered list of `Cuopon` components uses a `Transition` component from the animation library React Spring to animate the list of `Cuopons` when they enter or exit the list. See the library's [documentation](https://www.react-spring.io/) for more information on how this works.
+The un-ordered list of `Coupon` components uses a `Transition` component from the animation library React Spring to animate the list of `Coupons` when they enter or exit the list. See the library's [documentation](https://www.react-spring.io/) for more information on how this works.
 
-The `Transition` component takes in an array of items to animate. The array used here is `coupons` and a for loop feeds it coupon objects from the `byIds` object. I should have used `Object.values()` but sometimes I forget it exists and how useful it is.
+The `Transition` component takes in an array of items to animate. The array used here is `coupons` and a for loop feeds it coupon objects from the `byIds` object.
 
-The function that's a child of the `Transition` component returns a `Cuopon` component for each item in the `cuopons` array. The `item` is the coupon object and the `props` are the animated styles. The `Cuopon` is passed the functions `updateCuopon` and `removeCuopon` as props.
+The function that's a child of the `Transition` component returns a `Coupon` component for each item in the `coupons` array. The `item` is the coupon object and the `props` are the animated styles. The `Coupon` is passed the functions `updateCoupon` and `removeCoupon` as props.
 
 ```
-const { removeCuopon, updateCuopon, byIds, allIds } = props;
+const { removeCoupon, updateCoupon, byIds, allIds } = props;
 
 let coupons = [];
 
@@ -333,21 +333,21 @@ for (let i = 0; i < allIds.length; i++) {
 	enter={{opacity: 1, height: 'auto'}}
 	leave={{opacity:0, height: 0, margin: 0}}>
 
-	{item => props => <Cuopon style={props} cuopon={item} updateCuopon={updateCuopon} removeCuopon={removeCuopon} />}
+	{item => props => <Coupon style={props} coupon={item} updateCoupon={updateCoupon} removeCoupon={removeCoupon} />}
 
 </Transition>
 ```
 
-#### Cuopon
+#### Coupon
 
-The `Cuopon` components consist of a top section and a bottom section. The top section holds some data from the coupon object it recieves as props and the bottom section holds a form where a user can change the values of the cuopon as well as remove it from the list.
+The `Coupon` components consist of a top section and a bottom section. The top section holds some data from the coupon object it recieves as props and the bottom section holds a form where a user can change the values of the coupon as well as remove it from the list.
 
-When the `updateCuopon` action is fired, the top half of the component goes through a brief animation where the background color flashes blue.
+When the `updateCoupon` action is fired, the top half of the component goes through a brief animation where the background color flashes blue.
 
 
-#### AddCuopon
+#### AddCoupon
 
-The `AddCuopon` component is the third component other than `CuoponList` and `CSVDownloadButton` to connect to the store and recieves the `addCuopon` action creator as a prop. It holds the input values in its state and dispatches an `ADD_CUOPON` action when the form is submitted. I connected it to the store despite it being a child of the `CuoponList` component because I wanted the flexibility to be able to reuse it elsewhere in the app.
+The `AddCoupon` component is the third component other than `CouponList` and `CSVDownloadButton` to connect to the store and recieves the `addCoupon` action creator as a prop. It holds the input values in its state and dispatches an `ADD_COUPON` action when the form is submitted. I connected it to the store despite it being a child of the `CouponList` component because I wanted the flexibility to be able to reuse it elsewhere in the app.
 
 
 #### CSVDownloadButton
