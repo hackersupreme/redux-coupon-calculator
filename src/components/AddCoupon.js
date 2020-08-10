@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCuopon } from '../redux/actions.js';
-import './css/addcuopon.css';
+import { addCoupon } from '../redux/actions.js';
+import './css/addcoupon.css';
 
-class AddCuopon extends Component {
+class AddCoupon extends Component {
 
 	constructor() {
 
@@ -29,7 +29,7 @@ class AddCuopon extends Component {
 
 		const discount_price = price - ( ( discount / 100 ) * price );
 
-		let cuopon = {
+		let coupon = {
 			name: name,
 			price: price,
 			quantity: quantity,
@@ -38,7 +38,7 @@ class AddCuopon extends Component {
 			discount_price: discount_price.toFixed(2)
 		}
 
-		this.props.addCuopon(cuopon)
+		this.props.addCoupon(coupon)
 
 	}
 
@@ -46,17 +46,17 @@ class AddCuopon extends Component {
 
 		return(
 
-			<form className="add-cuopon__form color-dark" onSubmit={this.handleSubmit}>
+			<form className="add-coupon__form color-dark" onSubmit={this.handleSubmit}>
 
-	          	<label for="name" className="add-cuopon__form-label">Product Name</label>
+	          	<label for="name" className="add-coupon__form-label">Product Name</label>
 	          	
-	          	<label for="price" className="add-cuopon__form-label">Product Price ($)</label>
+	          	<label for="price" className="add-coupon__form-label">Product Price ($)</label>
 
-	          	<label for="quantity" className="add-cuopon__form-label">Quantity</label>
+	          	<label for="quantity" className="add-coupon__form-label">Quantity</label>
 
-	          	<label for="discount" className="add-cuopon__form-label">Discount (0-100)</label>
+	          	<label for="discount" className="add-coupon__form-label">Discount (0-100)</label>
 
-	          	<label for="expiration" className="add-cuopon__form-label">Expiration Date</label>
+	          	<label for="expiration" className="add-coupon__form-label">Expiration Date</label>
 
 	          	<input 
 	          		name="name"
@@ -64,7 +64,7 @@ class AddCuopon extends Component {
 	          		placeholder="Product Name eg. Waffles"
 	          		minlength="1" 
 	          		maxlength="40" 
-	          		className="add-cuopon__form-input"
+	          		className="add-coupon__form-input"
 	          		onChange={e => this.setState({name: e.target.value})}
 	          		required
 	          	/>
@@ -75,7 +75,7 @@ class AddCuopon extends Component {
 		          	placeholder="29.99" 
 		          	min="0" 
 		          	max="100000000"
-		          	className="add-cuopon__form-input"
+		          	className="add-coupon__form-input"
 		          	onChange={e => this.setState({price: e.target.value})}
 	          		required
 	          	/>
@@ -86,7 +86,7 @@ class AddCuopon extends Component {
 		          	min="0" 
 		          	max="100000000" 
 		          	defaultValue={1} 
-		          	className="add-cuopon__form-input"
+		          	className="add-coupon__form-input"
 		          	onChange={e => this.setState({quantity: e.target.value})}
 	          		required
 	          	/>	
@@ -98,7 +98,7 @@ class AddCuopon extends Component {
 					min="0"
 					max="100"
 					required
-					className="add-cuopon__form-input"
+					className="add-coupon__form-input"
 					onChange={e => this.setState({discount: e.target.value})}
 					required
 				/>
@@ -108,11 +108,11 @@ class AddCuopon extends Component {
 					type="date"
 					placeholder="2020-07-02"
 					required
-					className="add-cuopon__form-input"
+					className="add-coupon__form-input"
 					onChange={e => this.setState({expiration: e.target.value})}
 				/>
 
-	          	<input type="submit" value="Create Cuopon" className="add-cuopon__form-submit" />
+	          	<input type="submit" value="Create Coupon" className="add-coupon__form-submit" />
 	        
 	        </form>
 
@@ -124,5 +124,5 @@ class AddCuopon extends Component {
 
 export default connect(
 	null,
-	{ addCuopon }
-)(AddCuopon)
+	{ addCoupon }
+)(AddCoupon)

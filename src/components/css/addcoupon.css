@@ -1,4 +1,4 @@
-.add-cuopon__form {
+.add-coupon__form {
 	padding: 32px 0px;
 	display: grid;
 	grid-template-columns: auto 130px 130px 130px 180px;
@@ -6,7 +6,7 @@
 	border-bottom: 1px solid #f2f5f7;
 }
 
-.add-cuopon__form-label {
+.add-coupon__form-label {
 	font-weight: bolder;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -14,19 +14,19 @@
 }
 
 
-.add-cuopon__form-input {
+.add-coupon__form-input {
 	padding: 12px;
 	border-radius: 4px;
 	border: 1px solid white;
 	background: white;
 }
 
-.add-cuopon__form-input:focus {
+.add-coupon__form-input:focus {
 	border: 1px solid #3c4c54;
 	outline: none;
 }
 
-.add-cuopon__form-submit {
+.add-coupon__form-submit {
 	padding: 12px 24px;
 	margin-top: 16px;
 	border: none;
@@ -40,7 +40,7 @@
 }
 
 
-.add-cuopon__form-submit:hover,
-.add-cuopon__form-submit:focus {
+.add-coupon__form-submit:hover,
+.add-coupon__form-submit:focus {
 	background: #273238;
 }

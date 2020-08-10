@@ -3,7 +3,7 @@ import { animated } from 'react-spring';
 import { Spring } from 'react-spring/renderprops';
 import { formatDate } from '../redux/utilities.js';
 
-class Cuopon extends Component {
+class Coupon extends Component {
 
 	constructor(props) {
 		super(props);
@@ -21,14 +21,14 @@ class Cuopon extends Component {
 
 	componentDidMount() {
 
-		let cuopon = this.props.cuopon;
+		let coupon = this.props.coupon;
 
 		this.setState({
-			name: cuopon.name,
-			price: cuopon.price,
-			quantity: cuopon.quantity,
-			discount: cuopon.discount,
-			expiration: cuopon.expiration
+			name: coupon.name,
+			price: coupon.price,
+			quantity: coupon.quantity,
+			discount: coupon.discount,
+			expiration: coupon.expiration
 		});
 
 	}
@@ -49,8 +49,8 @@ class Cuopon extends Component {
 
 		const discount_price = price - ( ( discount / 100 ) * price );
 
-		let cuopon = {
-			id: this.props.cuopon.id,
+		let coupon = {
+			id: this.props.coupon.id,
 			name: name,
 			price: price,
 			quantity: quantity,
@@ -59,7 +59,7 @@ class Cuopon extends Component {
 			discount_price: discount_price.toFixed(2)
 		};
 
-		this.props.updateCuopon(cuopon);
+		this.props.updateCoupon(coupon);
 
 		this.setState({
 			submitted: true
@@ -71,11 +71,11 @@ class Cuopon extends Component {
 
 	render() {
 
-		let cuopon = this.props.cuopon;
+		let coupon = this.props.coupon;
 
 		return(
 
-		<li className="cuopon__container" style={this.props.style}>
+		<li className="coupon__container" style={this.props.style}>
 
 			<Spring
 				from={{background: 'white'}}
@@ -88,15 +88,15 @@ class Cuopon extends Component {
 
 			{styles => (
 
-				<section className="cuopon__top-section" style={styles}>
+				<section className="coupon__top-section" style={styles}>
 
-					<h4 className="cuopon__discount color-dark">{cuopon.discount}<span>%OFF</span></h4>
+					<h4 className="coupon__discount color-dark">{coupon.discount}<span>%OFF</span></h4>
 
-					<h5 className="cuopon__name color-dark">{cuopon.name}</h5>
+					<h5 className="coupon__name color-dark">{coupon.name}</h5>
 
-					<p className="cuopon__expiration color-dark">{'expires by ' + formatDate(cuopon.expiration)}</p>
+					<p className="coupon__expiration color-dark">{'expires by ' + formatDate(coupon.expiration)}</p>
 
-					<p className="cuopon__price color-dark">{'$' + cuopon.discount_price + ' for ' + cuopon.quantity}</p>
+					<p className="coupon__price color-dark">{'$' + coupon.discount_price + ' for ' + coupon.quantity}</p>
 
 				</section>
 
@@ -105,42 +105,42 @@ class Cuopon extends Component {
 
 			</Spring>
 
-			<section className="cuopon__bottom-section">
+			<section className="coupon__bottom-section">
 
-				<form className="cuopon__form color-dark" onSubmit={e => this.handleSubmit(e)}>
+				<form className="coupon__form color-dark" onSubmit={e => this.handleSubmit(e)}>
 
 		          	<label 
 		          		for="name" 
-		          		className="cuopon__form-label"
+		          		className="coupon__form-label"
 		          	>Product Name</label>
 
 		          	<label 
 		          		for="price" 
-		          		className="cuopon__form-label"
+		          		className="coupon__form-label"
 		          	>Product Price ($)</label>
 
 		          	<label 
 		          		for="quantity" 
-		          		className="cuopon__form-label"
+		          		className="coupon__form-label"
 		          	>Quantity</label>
 
 		          	<label 
 		          		for="discount" 
-		          		className="cuopon__form-label"
+		          		className="coupon__form-label"
 		          	>Discount (0-100)</label>
 
 		          	<label 
 		          		for="expiration" 
-		          		className="cuopon__form-label"
+		          		className="coupon__form-label"
 		          	>Expiration Date</label>
 
 		          	<input 
 		          		name="name"
 		          		type="text" 
-		          		defaultValue={cuopon.name}
+		          		defaultValue={coupon.name}
 		          		minlength="1" 
 		          		maxlength="30" 
-		          		className="cuopon__form-input color-dark"
+		          		className="coupon__form-input color-dark"
 		          		onChange={e => this.setState({name: e.target.value})}
 		          		required
 		          	/>
@@ -148,10 +148,10 @@ class Cuopon extends Component {
 		          	<input 
 		          		name="price"
 			          	type="number"
-			          	defaultValue={cuopon.price}
+			          	defaultValue={coupon.price}
 			          	min="0" 
 			          	max="1000000"
-			          	className="cuopon__form-input color-dark"
+			          	className="coupon__form-input color-dark"
 			          	onChange={e => this.setState({price: e.target.value})}
 		          		required
 		          	/>
@@ -159,10 +159,10 @@ class Cuopon extends Component {
 		          	<input 
 		          		name="quantity"
 			          	type="number" 
-			          	defaultValue={cuopon.quantity}
+			          	defaultValue={coupon.quantity}
 			          	min="0" 
 			          	max="100000000"   
-			          	className="cuopon__form-input color-dark"
+			          	className="coupon__form-input color-dark"
 			          	onChange={e => this.setState({quantity: e.target.value})}
 		          		required
 		          	/>	
@@ -173,8 +173,8 @@ class Cuopon extends Component {
 						placeholder="20"
 						min="0"
 						max="100"
-						className="cuopon__form-input color-dark"
-						defaultValue={cuopon.discount}
+						className="coupon__form-input color-dark"
+						defaultValue={coupon.discount}
 						onChange={e => this.setState({discount: e.target.value})}
 						required
 					/>
@@ -183,20 +183,20 @@ class Cuopon extends Component {
 						name="expiration"
 						type="date"
 						placeholder="20"
-						className="cuopon__form-input"
-						defaultValue={cuopon.expiration}
+						className="coupon__form-input"
+						defaultValue={coupon.expiration}
 						onChange={e => this.setState({expiration: e.target.value})}
 						required
 					/>
 
 					<button 
 						type="button" 
-						className="cuopon__form-remove" 
-						onClick={() => this.props.removeCuopon(cuopon.id)}
+						className="coupon__form-remove" 
+						onClick={() => this.props.removeCoupon(coupon.id)}
 					>Remove</button>
 
 		          	<input 
-		          		className="cuopon__form-submit" 
+		          		className="coupon__form-submit" 
 		          		type="submit" 
 		          		value="Save Changes" />
 	        
@@ -211,4 +211,4 @@ class Cuopon extends Component {
 };
 
 
-export default Cuopon;
+export default Coupon;

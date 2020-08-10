@@ -17,7 +17,7 @@ const mapStateToProps = state => {''
 	
 	return {
 
-		byIds: state.cuopons.byIds
+		byIds: state.coupons.byIds
 
 	}
 

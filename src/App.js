@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import CSVDownloadButton from './components/CSVDownloadButton.js';
-import CuoponList from './components/CuoponList.js';
+import CouponList from './components/CouponList.js';
 
 
 const App = () => (
@@ -11,18 +11,18 @@ const App = () => (
     <header className="header__container">
 
       <h1 className="header__title color-dark">
-        Cuopon Calculator
+        Coupon Calculator
       </h1>
 
       <h2 className="header__subtitle color-dark">
-        Create cuopons and export them in csv format
+        Create coupons and export them in csv format
       </h2>
 
       <CSVDownloadButton />
 
     </header>
 
-    <CuoponList />
+    <CouponList />
 
     <section className="csv-about__container">
 
@@ -40,14 +40,14 @@ const App = () => (
         </li>
         
         <li className="color-dark csv-about__list-item">
-          Once you've added a cuopon, you can edit it 
+          Once you've added a coupon, you can edit it 
           directly if you need to make changes.
-          Or you can remove the cuopon.
+          Or you can remove the coupon.
         </li>
 
         <li className="color-dark csv-about__list-item">
           When you're ready, click on the Download CSV button 
-          to download the csv file with you cuopon data.
+          to download the csv file with you coupon data.
         </li>
         
         <li className="color-dark csv-about__list-item">

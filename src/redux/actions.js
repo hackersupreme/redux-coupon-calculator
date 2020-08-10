@@ -1,27 +1,27 @@
-export const ADD_CUOPON = "ADD_CUOPON";
-export const REMOVE_CUOPON = "REMOVE_CUOPON";
-export const UPDATE_CUOPON = "UPDATE_CUOPON";
+export const ADD_COUPON = "ADD_COUPON";
+export const REMOVE_COUPON = "REMOVE_COUPON";
+export const UPDATE_COUPON = "UPDATE_COUPON";
 
 
-let nextCuoponId = 0;
+let nextCouponId = 0;
 
 
-export const addCuopon = cuopon => ({
-	type: ADD_CUOPON,
+export const addCoupon = coupon => ({
+	type: ADD_COUPON,
 	payload: {
-		id: ++nextCuoponId,
-		content: cuopon
+		id: ++nextCouponId,
+		content: coupon
 	}
 })
 
 
-export const removeCuopon = id => ({
-	type: REMOVE_CUOPON,
+export const removeCoupon = id => ({
+	type: REMOVE_COUPON,
 	payload: id
 })
 
 
-export const updateCuopon = cuopon => ({
-	type: UPDATE_CUOPON,
-	payload: cuopon
+export const updateCoupon = coupon => ({
+	type: UPDATE_COUPON,
+	payload: coupon
 })

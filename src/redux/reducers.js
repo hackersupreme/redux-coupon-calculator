@@ -1,4 +1,4 @@
-import { ADD_CUOPON, REMOVE_CUOPON, UPDATE_CUOPON } from './actions.js';
+import { ADD_COUPON, REMOVE_COUPON, UPDATE_COUPON } from './actions.js';
 import { combineReducers } from 'redux';
 
 
@@ -8,11 +8,11 @@ const initialState = {
 }
 
 
-let cuopons = function(state = initialState, action) {
+let coupons = function(state = initialState, action) {
 
 	switch(action.type) {
 
-		case ADD_CUOPON:
+		case ADD_COUPON:
 
 			let { content, id } = action.payload;
 
@@ -49,9 +49,9 @@ let cuopons = function(state = initialState, action) {
 
 			return updated_state;
 
-		case UPDATE_CUOPON:
+		case UPDATE_COUPON:
 
-			let updated_cuopon = action.payload;
+			let updated_coupon = action.payload;
 
 			return {
 
@@ -61,22 +61,22 @@ let cuopons = function(state = initialState, action) {
 
 					...state.byIds,
 
-					[updated_cuopon.id]: {
+					[updated_coupon.id]: {
 
-						id: updated_cuopon.id,
-						name: updated_cuopon.name,
-						price: updated_cuopon.price,
-						quantity: updated_cuopon.quantity,
-						discount: updated_cuopon.discount,
-						discount_price: updated_cuopon.discount_price,
-						expiration: updated_cuopon.expiration
+						id: updated_coupon.id,
+						name: updated_coupon.name,
+						price: updated_coupon.price,
+						quantity: updated_coupon.quantity,
+						discount: updated_coupon.discount,
+						discount_price: updated_coupon.discount_price,
+						expiration: updated_coupon.expiration
 					}
 
 				}
 
 			}
 
-		case REMOVE_CUOPON: 
+		case REMOVE_COUPON: 
 
 			let removed_id = action.payload;
 
@@ -116,4 +116,4 @@ let cuopons = function(state = initialState, action) {
 }
 
 
-export default combineReducers({ cuopons });
+export default combineReducers({ coupons });
